@@ -10,7 +10,27 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, "client")))
+const publicDirectoryPath = path.join(__dirname, 'public');
+
+app.use(express.static(publicDirectoryPath));
+
+// define a root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(publicDirectoryPath, 'index.html'));
+});
+
+app.get('/event-june7.html', (req, res) => {
+  res.sendFile(path.join(publicDirectoryPath, 'event-june7.html'));
+});
+
+app.get('/event-june8.html', (req, res) => {
+  res.sendFile(path.join(publicDirectoryPath, 'event-june8.html'));
+});
+
+app.get('/event-june9.html', (req, res) => {
+  res.sendFile(path.join(publicDirectoryPath, 'event-june9.html'));
+});
+
 
 const publicVapidKey = "BOd2EQ8LTe3KAgMX9lWwTlHTRzv1Iantw50Mw6pUnsNr3pcxl8iglUs-YlQEQLo4UbJk9oyXs_BxgyAe0TCqKME";
 const privateVapidKey = "4AoSsRHFaHv0Fupd2NRtrungJF2jkqgccTu-WEc781w";
