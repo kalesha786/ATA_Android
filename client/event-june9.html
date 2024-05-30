@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+        <title>ATA - America Telugu Assosiations</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <style>
+        body {
+    background-color: #f8f9fa;
+}
+
+.event-item {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.event-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: black;
+    font-family: math;
+}
+
+.event-datetime {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.event-location {
+    font-size: 0.93rem;
+    color: #0d0e0e;
+    margin-top: 8px;
+}
+
+.event-heading {
+    margin-bottom: 50px !important;
+}
+.event-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.morning-event {
+    background-color: #ffeb99; /* Light Yellow */
+}
+
+.afternoon-event {
+    background-color: #ffcccb; /* Light Red */
+}
+
+.night-event {
+    background-color: #b0e0e6; /* Light Blue */
+}
+
+h2 {
+    color: #a2a3a4;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+    </style>
+</head>
+<body>
+
+     <!-- Spinner Start -->
+     <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+     <!-- Navbar start -->
+     <div class="container-fluid fixed-top px-0" style="position: relative !important;">
+        <div class="container px-0">
+            <nav class="navbar navbar-light navbar-expand-xl">
+                <a href="index.html" class="navbar-brand ms-3">
+                    <h1 class="text-primary display-5"><img src="img/icon.png" style="
+                        height: 60px;
+                        border-radius: 10px 0 0 10px;
+                        margin-top: 8px;
+                    "><img src="img/logoSecond.jpeg" style="height: 60px;margin-top: 8px;border-radius: 0 10px 10px 0;"></h1>
+                </a>
+                <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="index.html" class="nav-item nav-link">Home</a>      
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Upcoming Events
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a href="event-june7.html" class="dropdown-item">Event June - 7</a></li>
+                                <li><a href="event-june8.html" class="dropdown-item">Event June - 8</a></li>
+                                <li><a href="event-june9.html" class="dropdown-item">Event June - 9</a></li>
+                            </ul>
+                        </div>                    
+                    </div>
+                </div>                    
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Carousel Start -->
+    <div class="container-fluid carousel-header vh-100 px-0 carosel-main-style">
+        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img src="img/imageOne.jpeg" class="img-fluid carosel-images" alt="Image">
+                    <div class="carousel-caption">
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/imageTwo.jpeg" class="img-fluid carosel-images" alt="Image">
+                    <div class="carousel-caption">
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/imageThree.jpeg" class="img-fluid carosel-images" alt="Image">
+                    <div class="carousel-caption">
+                        
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- Events Start -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Conference Events Schedule</h1>
+        
+        <div id="morning-events" class="event-heading">
+            <h2 class="mb-3">Morning Events</h2>
+            <div class="row">
+                <!-- Morning event items will be appended here by jQuery -->
+            </div>
+        </div>
+
+        <div id="afternoon-events" class="event-heading">
+            <h2 class="mb-3">Afternoon Events</h2>
+            <div class="row">
+                <!-- Afternoon event items will be appended here by jQuery -->
+            </div>
+        </div>
+
+        <div id="night-events" class="event-heading">
+            <h2 class="mb-3">Night Events</h2>
+            <div class="row">
+                <!-- Night event items will be appended here by jQuery -->
+            </div>
+        </div>
+    </div>
+<!-- Events Start -->
+
+ <!-- Copyright Start -->
+ <div class="container-fluid copyright py-4">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-4 text-center text-md-start mb-md-0">
+                <span class="text-body"><a href="#"><i class="fas fa-copyright text-light me-2"></i>ATA</a>, All right reserved.</span>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center text-md-end text-body">
+              </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <!-- Custom JS -->
+    <script>
+ window.addEventListener('scroll', function() {
+    let container = document.querySelector('.container');
+    if (window.scrollY > 1) { // Example condition
+        container.style.maxWidth = '100%'; // Adjust or remove this line
+    } else {
+        container.style.maxWidth = '100%'; // Adjust or remove this line
+    }
+});
+
+$(document).ready(function() {
+    $.ajax({
+            url: '/events?eventDate=june-9', // Update the URL with your API endpoint
+            type: 'GET',
+            success: function(response) {
+                const events=response;
+
+    // Function to determine event time category and corresponding class
+    function getEventClass(startTime) {
+        var hour = startTime.hour();
+        if (hour >= 6 && hour < 12) {
+            return 'morning-event';
+        } else if (hour >= 12 && hour < 18) {
+            return 'afternoon-event';
+        } else {
+            return 'night-event';
+        }
+    }
+
+    // Function to determine event time category
+    function getEventTimeCategory(startTime) {
+        var hour = startTime.hour();
+        if (hour >= 6 && hour < 12) {
+            return 'morning';
+        } else if (hour >= 12 && hour < 18) {
+            return 'afternoon';
+        } else {
+            return 'night';
+        }
+    }
+
+    // Function to render events
+    function renderEvents() {
+        var morningEvents = $('#morning-events .row');
+        var afternoonEvents = $('#afternoon-events .row');
+        var nightEvents = $('#night-events .row');
+
+        // Clear existing events
+        morningEvents.empty();
+        afternoonEvents.empty();
+        nightEvents.empty();
+
+        events.forEach(function(event) {
+            var startDate = moment(event.startDate, 'YYYY-MM-DD hh:mm A');
+            var endDate = moment(event.endDate, 'YYYY-MM-DD hh:mm A');
+
+            if (!startDate.isValid() || !endDate.isValid()) {
+                console.error('Invalid date format for event:', event);
+                return;
+            }
+
+            var eventClass = getEventClass(startDate);
+            var eventTimeCategory = getEventTimeCategory(startDate);
+            var eventList;
+
+            switch (eventTimeCategory) {
+                case 'morning':
+                    eventList = morningEvents;
+                    break;
+                case 'afternoon':
+                    eventList = afternoonEvents;
+                    break;
+                case 'night':
+                    eventList = nightEvents;
+                    break;
+            }
+
+            var eventItem = `
+                <div class="col-md-4">
+                    <div class="event-item ${eventClass}">
+                        <div class="event-title">${event.title}</div>
+                        <div class="event-datetime event-time">
+                            <span>Start Time: ${startDate.format('hh:mm A')}</span>
+                            <span>End Time: ${endDate.format('hh:mm A')}</span>
+                        </div>
+                        <div class="event-location"><i class="fas fa-map-marker-alt me-2"></i>: ${event.location} </div>
+                    </div>
+                </div>
+            `;
+            eventList.append(eventItem);
+        });
+    }
+
+    // Initial render
+    renderEvents();
+},
+            error: function(xhr, status, error) {
+                console.error('Error fetching events:', error);
+                // Handle the error condition
+            }
+        });
+});
+    </script>
+</body>
+</html>
