@@ -26,7 +26,7 @@ else{
 };
 
 Events.getEvent = function (eventDate, result) {
-    dbConn.query("Select * from events where event = ? ", eventDate, function (err, res) {
+    dbConn.query("Select * from events where event = ? order by startDate", eventDate, function (err, res) {
     if(err) {
       console.log("error: ", err);
       result(err, null);

@@ -91,7 +91,7 @@ app.post('/sendpush', (req, res) => {
 })
 
 app.post('/events', (req, res) => {
-    const { event, title, startDate, endDate, status } = req.body; // Destructure the properties from req.body
+    const { event, title, startDate, endDate, status, location } = req.body; // Destructure the properties from req.body
 
     // Create a new event object
     const newEvent = {
@@ -100,6 +100,7 @@ app.post('/events', (req, res) => {
         startDate: startDate,
         endDate: endDate,
         status: status || 1, // Use status from req.body or default to 1
+        location : location
     };
     Events.create(newEvent, (err, eventId) => {
         if (err) {

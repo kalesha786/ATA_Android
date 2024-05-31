@@ -130,6 +130,18 @@
         display: none;    
     }
 }
+
+@media (max-width: 385px) {
+    .logo-styles {
+        height: 50px !important;    
+    }
+}
+
+@media (min-width: 386px) {
+    .logo-styles {
+        height: 60px !important;    
+    }
+}
 /*** Topbar End ***/
 
 

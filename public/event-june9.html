@@ -50,7 +50,7 @@
 }
 
 .event-datetime {
-    font-size: 0.875rem;
+    font-size: 0.99rem;
     color: #6c757d;
     margin-top: 5px;
 }
@@ -58,7 +58,7 @@
 .event-location {
     font-size: 0.93rem;
     color: #0d0e0e;
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
 .event-heading {
@@ -102,11 +102,10 @@ h2 {
         <div class="container px-0">
             <nav class="navbar navbar-light navbar-expand-xl">
                 <a href="index.html" class="navbar-brand ms-3">
-                    <h1 class="text-primary display-5"><img src="img/icon.png" style="
-                        height: 60px;
+                    <h1 class="text-primary display-5"><img src="img/icon.png" class="logo-styles" style="
                         border-radius: 10px 0 0 10px;
                         margin-top: 8px;
-                    "><img src="img/logoSecond.jpeg" style="height: 60px;margin-top: 8px;border-radius: 0 10px 10px 0;"></h1>
+                    "><img src="img/logoSecond.jpeg" class="logo-styles" style="margin-top: 8px;border-radius: 0 10px 10px 0;"></h1>
                 </a>
                 <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>
@@ -123,7 +122,10 @@ h2 {
                                 <li><a href="event-june8.html" class="dropdown-item">Event June - 8</a></li>
                                 <li><a href="event-june9.html" class="dropdown-item">Event June - 9</a></li>
                             </ul>
-                        </div>                    
+                        </div> 
+                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                            <a href="" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" id="subscribeButton">Subscribe Push Notifications</a>
+                        </div>                   
                     </div>
                 </div>                    
             </nav>
@@ -308,13 +310,28 @@ $(document).ready(function() {
                     break;
             }
 
-            var eventItem = `
+            function convertTextToHTML(text) {
+                        const lines = text.split('\n');
+                        const container = document.createElement('div');
+                        lines.forEach(line => {
+                            const p = document.createElement('p');
+                            if (line.startsWith('•')) {
+                                p.innerHTML = line; // Preserve bullet points
+                            } else {
+                                p.textContent = line; // For other text, set as text content
+                            }
+                            container.appendChild(p);
+                        });
+                        return container.innerHTML;
+                    }
+
+           var eventItem = `
                 <div class="col-md-4">
                     <div class="event-item ${eventClass}">
-                        <div class="event-title">${event.title}</div>
+                        <div class="event-title">${convertTextToHTML(event.title)}</div>
                         <div class="event-datetime event-time">
-                            <span>Start Time: ${startDate.format('hh:mm A')}</span>
-                            <span>End Time: ${endDate.format('hh:mm A')}</span>
+                            <span>Start Time: <span style="color:#4d4343">${startDate.format('hh:mm A')}</span></span>
+                            <span>End Time: <span style="color:#4d4343">${endDate.format('hh:mm A')}</span></span>
                         </div>
                         <div class="event-location"><i class="fas fa-map-marker-alt me-2"></i>: ${event.location} </div>
                     </div>
