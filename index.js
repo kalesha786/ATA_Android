@@ -2,12 +2,14 @@ const express = require('express');
 const webpush = require('web-push');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 
 const Devices = require('./models/devices.model.js');
 const Events = require('./models/events.model.js');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 const publicDirectoryPath = path.join(__dirname, 'public');
