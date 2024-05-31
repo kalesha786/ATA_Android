@@ -12,7 +12,7 @@ if ('serviceWorker' in navigator) {
                     applicationServerKey: publicVapidKey,
                 });
 
-                await fetch("http://localhost:3000/subscribe", {
+                await fetch("/subscribe", {
                     method: "POST",
                     body: JSON.stringify(subscription),
                     headers: {
