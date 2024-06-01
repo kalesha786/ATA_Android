@@ -14,7 +14,6 @@ async function initServiceWorker() {
             alert("click Subscribe Push Notifications");
             break;
         case 'granted':
-            displaySubscriptionInfo(await pushManager.getSubscription())
             break;
         case 'denied':
             alert('User denied push permission');
