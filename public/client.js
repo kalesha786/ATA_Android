@@ -11,7 +11,7 @@ async function initServiceWorker() {
     let permissionState = await pushManager.permissionState({userVisibleOnly: true});
     switch (permissionState) {
         case 'prompt':
-            alert("click Subscribe Push Notifications");
+            alert("Click Subscribe Push Notifications button from menu");
             break;
         case 'granted':
             break;
@@ -57,28 +57,9 @@ async function subscribeToPush() {
             }
         });
 
-        testSend(subscription);
-        // Here you can send fetch request with subscription data to your backend API for next push sends from there
     } catch (error) {
-        alert("User denied push permission");
+       // alert("User denied push permission");
     }
-}
-
-
-function testSend() {
-    const title = "Push title";
-    const options = {
-        body: "Additional text with some description",
-        icon: "https://andreinwald.github.io/webpush-ios-example/images/push_icon.jpg",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/1920px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg",
-        data: {
-            "url": "https://andreinwald.github.io/webpush-ios-example/?page=success",
-            "message_id": "your_internal_unique_message_id_for_tracking"
-        },
-    };
-    navigator.serviceWorker.ready.then(async function (serviceWorker) {
-        await serviceWorker.showNotification(title, options);
-    });
 }
 
 if ((new URLSearchParams(window.location.search)).get('page') === 'success') {
