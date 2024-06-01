@@ -82,6 +82,10 @@ function testSend() {
     });
 }
 
+if ((new URLSearchParams(window.location.search)).get('page') === 'success') {
+    document.getElementById('content').innerHTML = 'You successfully opened page from WebPush! (this url was that was set in json data param)';
+}
+
 if (navigator.serviceWorker) {
     initServiceWorker();
 }
