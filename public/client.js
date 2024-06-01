@@ -11,7 +11,7 @@ async function initServiceWorker() {
     let permissionState = await pushManager.permissionState({userVisibleOnly: true});
     switch (permissionState) {
         case 'prompt':
-            alert("Click Subscribe Push Notifications button from menu");
+            alert("Click Subscribe Push Notifications Button from Menu");
             break;
         case 'granted':
             break;
@@ -23,7 +23,7 @@ async function initServiceWorker() {
 function isPushManagerActive(pushManager) {
     if (!pushManager) {
         if (!window.navigator.standalone) {
-            alert("For ATA notifications, you may need to add this website to Home Screen at your iPhone or iPad.");
+            alert("For ATA notifications, You need to add this website to Home Screen at your iPhone or iPad.");
         } else {
             throw new Error('PushManager is not active');
         }
