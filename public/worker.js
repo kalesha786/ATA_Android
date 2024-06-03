@@ -20,7 +20,7 @@ self.addEventListener('push', event => {
 
 self.addEventListener('notificationclick', function (event) {   
     event.notification.close();
-    alert(event.notification.data);
+
     if (!event.notification.data) {
         console.error('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
         return;
