@@ -27,18 +27,19 @@ self.addEventListener('push', event => {
 
 self.addEventListener('notificationclick', function (event) {   
     event.notification.close();
-
+    alert(event.notification.data);
     if (!event.notification.data) {
-        alert('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
+        console.error('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
         return;
     }
     if (!event.notification.data.url) {
-        alert('Click on WebPush without url. Notification: ', event.notification)
+        console.error('Click on WebPush without url. Notification: ', event.notification)
         return;
     }
-    
+
     clients.openWindow(event.notification.data.url)
         .then(() => {
-            alert(event.notification.data.url)
+            // You can send fetch request to your analytics API fact that push was clicked
+            // fetch('https://your_backend_server.com/track_click?message_id=' + pushData.data.message_id);
         });
 });
