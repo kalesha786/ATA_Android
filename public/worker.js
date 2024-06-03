@@ -10,7 +10,7 @@ self.addEventListener('push', event => {
         body: data.body,
         icon: './img/icon.png',
         data: {
-            url: "https://ata-production.up.railway.app/notifications.html"
+            url: "/notifications.html"
         }
     };
 
@@ -23,7 +23,7 @@ self.addEventListener('push', event => {
 
 self.addEventListener('notificationclick', function (event) {   
     event.notification.close();
-
+    alert(event.notification.data.url);
     if (!event.notification.data) {
         console.error('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
         return;
