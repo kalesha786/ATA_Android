@@ -8,7 +8,10 @@ self.addEventListener('push', event => {
     }
     const options = {
         body: data.body,
-        icon: './img/icon.png'
+        icon: './img/icon.png',
+        data: {
+            url: "https://ata-production.up.railway.app/notifications.html"
+        }
     };
 
        self.registration.showNotification(data.title, options)
@@ -25,14 +28,19 @@ self.addEventListener('notificationclick', function (event) {
         console.error('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
         return;
     }
-    if (!event.notification.data.url) {
-        console.error('Click on WebPush without url. Notification: ', event.notification)
-        return;
-    }
-
-    clients.openWindow(event.notification.data.url)
-        .then(() => {
-            // You can send fetch request to your analytics API fact that push was clicked
-            // fetch('https://your_backend_server.com/track_click?message_id=' + pushData.data.message_id);
-        });
+    const urlToOpen = event.notification.data.url;
+    event.waitUntil(
+        clients.matchAll({ type: 'window' }).then(windowClients => {
+            // Check if there's already a window/tab open with the target URL
+            for (let client of windowClients) {
+                if (client.url === urlToOpen && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+            // If not, open a new window/tab with the target URL
+            if (clients.openWindow) {
+                return clients.openWindow(urlToOpen);
+            }
+        })
+    );
 });
