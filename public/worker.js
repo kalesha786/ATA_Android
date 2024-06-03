@@ -8,8 +8,15 @@ self.addEventListener('push', event => {
     }
     const options = {
         body: data.body,
-        icon: './img/icon.png'
+        icon: './img/icon.png',
+        data: {
+            url: 'https://ata-production.up.railway.app/notifications.html'
+          }
     };
+
+    let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+    notifications.push({ title: data.title, body: data.body, timestamp: Date.now() });
+    localStorage.setItem('notifications', JSON.stringify(notifications));
 
        self.registration.showNotification(data.title, options)
        .then(() => {
