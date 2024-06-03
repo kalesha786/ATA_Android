@@ -3,9 +3,12 @@ const webpush = require('web-push');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
+const cron = require('node-cron');
 
 const Devices = require('./models/devices.model.js');
 const Events = require('./models/events.model.js');
+const Notifications = require('./models/notifications.model.js');
+const { title } = require('process');
 
 const app = express();
 
@@ -32,6 +35,14 @@ app.get('/event-june8.html', (req, res) => {
 app.get('/event-june9.html', (req, res) => {
   res.sendFile(path.join(publicDirectoryPath, 'event-june9.html'));
 });
+
+app.get('/notifications.html', (req, res) => {
+    res.sendFile(path.join(publicDirectoryPath, 'index-notifications.html'));
+  });
+
+app.get('/event-information.html', (req, res) => {
+    res.sendFile(path.join(publicDirectoryPath, 'index-notifications.html'));
+  });
 
 
 const publicVapidKey = "BOd2EQ8LTe3KAgMX9lWwTlHTRzv1Iantw50Mw6pUnsNr3pcxl8iglUs-YlQEQLo4UbJk9oyXs_BxgyAe0TCqKME";
@@ -70,6 +81,14 @@ app.post('/subscribe', (req, res) => {
 });
 
 app.post('/sendpush', (req, res) => {
+
+    const newNotifications = new Notifications({ title: req.query.title, body: req.query.body });
+
+    Notifications.create(newNotifications, function(err, device) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+    });
 
     Devices.findAll((err, devices) => {
         if (err) {
@@ -124,6 +143,32 @@ app.get('/events', (req, res) => {
 
         res.status(200).send(events);
     })
+});
+
+cron.schedule('*/5 * * * *', () => {
+    console.log('Running the cron job to delete old records');
+  
+    // SQL query to delete records older than 30 days
+    const query = `DELETE FROM notifications WHERE createdTime < NOW() - INTERVAL 2 MINUTE`;
+  
+    Notifications.deleteData((err, notifications) => {
+      if (err) {
+        console.error('Error deleting records:', err);
+      } else {
+        console.log(`Deleted ${notifications.affectedRows} rows`);
+      }
+    });
+  });
+
+  // Get All Notifications
+app.get('/notifications', (req, res) => {
+
+    Notifications.findAll((err, notifications) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.status(200).json(notifications);
+    });
 });
 
 const PORT = process.env.PORT || 3000;

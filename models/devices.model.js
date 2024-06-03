@@ -23,7 +23,7 @@ else{
 };
 
 Devices.findAll = function (result) {
-    dbConn.query("Select * from devices", function (err, res) {
+    dbConn.query("Select * from devices where status=1", function (err, res) {
     if(err) {
       console.log("error: ", err);
       result(null, err);
