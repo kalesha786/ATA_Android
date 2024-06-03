@@ -36,15 +36,9 @@ self.addEventListener('notificationclick', function (event) {
         alert('Click on WebPush without url. Notification: ', event.notification)
         return;
     }
-    if (event.notification.data && event.notification.data.url) {
-        alert(event.notification.data.url);
-        event.waitUntil(
-          clients.openWindow(event.notification.data.url)
-        );
-      }
+    
     clients.openWindow(event.notification.data.url)
         .then(() => {
-            // You can send fetch request to your analytics API fact that push was clicked
-            // fetch('https://your_backend_server.com/track_click?message_id=' + pushData.data.message_id);
+            alert(event.notification.data.url)
         });
 });
