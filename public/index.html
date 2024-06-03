@@ -29,6 +29,13 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <style>
+            .notification {
+                background: blanchedalmond;
+                padding: 5px;
+                margin-top: 10px;
+            }
+        </style>
     </head>
 
     <body>
@@ -116,6 +123,25 @@
             </div>
         </div>
         <!-- Carousel End -->
+
+        <div class="container">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Notifications</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="notification-container"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+                </div>
+              </div>
+        </div>
 
         <!-- Events Start -->
         <div class="container-fluid event py-5">
@@ -288,6 +314,35 @@
             video.style.display = 'block'; // Show the video
             video.play();  // Start playing the video
         });
+
+        $(document).ready(function() {
+
+$("#exampleModal").modal("toggle");
+
+const notificationContainer = document.getElementById('notification-container');
+
+$.ajax({
+        url: '/notifications', // Update the URL with your API endpoint
+        type: 'GET',
+        success: function(response) {
+            const notifications=response;
+    notificationContainer.innerHTML = '';
+
+    notifications.forEach((notification, index) => {
+        let notificationElement = document.createElement('div');
+        notificationElement.classList.add('notification');
+        notificationElement.innerHTML = `
+            <h4>${notification.title}</h4>
+            <p>${notification.body}</p>
+            <hr>
+        `;
+        notificationContainer.appendChild(notificationElement);
+    });
+
+}
+})
+
+});
         </script>
     </body>
 
