@@ -316,8 +316,6 @@
         });
 
 
-$("#exampleModal").modal("toggle");
-
 const notificationContainer = document.getElementById('notification-container');
 
 $.ajax({
@@ -336,6 +334,7 @@ $.ajax({
             <hr>
         `;
         notificationContainer.appendChild(notificationElement);
+        $("#exampleModal").modal("toggle");
     });
 
 }
