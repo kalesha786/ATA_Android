@@ -67,10 +67,5 @@ if ((new URLSearchParams(window.location.search)).get('page') === 'success') {
 }
 
 if (navigator.serviceWorker) {
-    initServiceWorker();
-    navigator.serviceWorker.addEventListener('message', function(event) {
-        if (event.data.type === 'PUSH_NOTIFICATION') {
-          fetchNotifications();
-        }
-      });
+        initServiceWorker();
 }
