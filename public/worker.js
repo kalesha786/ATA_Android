@@ -28,19 +28,7 @@ self.addEventListener('notificationclick', function (event) {
         console.error('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
         return;
     }
-    const urlToOpen = event.notification.data.url;
     event.waitUntil(
-        clients.matchAll({ type: 'window' }).then(windowClients => {
-            // Check if there's already a window/tab open with the target URL
-            for (let client of windowClients) {
-                if (client.url === urlToOpen && 'focus' in client) {
-                    return client.focus();
-                }
-            }
-            // If not, open a new window/tab with the target URL
-            if (clients.openWindow) {
-                return clients.openWindow(urlToOpen);
-            }
-        })
-    );
+        clients.openWindow('/')
+      );
 });
