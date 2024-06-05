@@ -106,7 +106,7 @@ app.post('/sendpush', (req, res) => {
             processedDevices.push(device);
         });
 
-        res.status(200).json(processedDevices);
+        res.status(200).json(processedDevices.length);
     });
 
 })
